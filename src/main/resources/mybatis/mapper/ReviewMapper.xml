@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nineproject.ReviewReceipt.review.ReviewMapper">
+    <insert id="insertRv" parameterType="nineproject.ReviewReceipt.model.ReviewVO" useGeneratedKeys="true" keyProperty="REVIEW_ID">
+
+            INSERT INTO review
+            (
+                USER_ID,
+                CREATE_DATE,
+                MODIFY_DATE,
+                REVIEW_TYPE,
+                DO_DATE,
+                REVIEW_TITLE,
+                PUBLISH_DATE,
+                ABSTRACT_TXT,
+                PUBLISHER,
+                DIRECTOR,
+                PLAYER,
+                FAVORITE_LINE,
+                SHOW_TYPE,
+                PLACE,
+                STATUS
+            ) VALUE (
+                #{USER_ID},
+                NOW(),
+                NOW(),
+                #{REVIEW_TYPE},
+                #{DO_DATE},
+                #{REVIEW_TITLE},
+                #{PUBLISH_DATE},
+                #{ABSTRACT_TXT},
+                #{PUBLISHER},
+                #{DIRECTOR},
+                #{PLAYER},
+                #{FAVORITE_LINE},
+                #{SHOW_TYPE},
+                #{PLACE},
+                1
+            )
+    </insert>
+
+    <update id="updateRv" parameterType="Hashmap">
+    <!--review -->
+        UPDATE
+            review
+        SET
+            MODIFY_DATE = NOW(),
+            REVIEW_TYPE = #{review.REVIEW_TYPE},
+            DO_DATE = #{review.DO_DATE},
+            REVIEW_TITLE = #{review.REVIEW_TITLE},
+            PUBLISH_DATE = #{review.PUBLISH_DATE},
+            ABSTRACT_TXT = #{review.ABSTRACT_TXT},
+            PUBLISHER = #{review.PUBLISHER},
+            DIRECTOR = #{review.DIRECTOR},
+            PLAYER = #{review.PLAYER},
+            FAVORITE_LINE = #{review.FAVORITE_LINE},
+            SHOW_TYPE = #{review.SHOW_TYPE},
+            PLACE = #{review.PLACE}
+        WHERE
+            REVIEW_ID = #{rvid}
+    <!--review detail-->
+<!--        UPDATE-->
+<!--            review_detail-->
+<!--        SET-->
+<!--            STATUS = 0-->
+<!--        WHERE-->
+<!--            REVIEW_ID = #{rvid};-->
+
+    </update>
+
+    <update id="deleteRv" parameterType="int">
+        UPDATE
+            review
+        SET
+            STATUS = 0
+        WHERE
+            REVIEW_ID = #{rvid}
+    </update>
+
+</mapper>
