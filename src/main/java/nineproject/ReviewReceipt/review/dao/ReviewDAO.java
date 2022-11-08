@@ -1,6 +1,6 @@
 package nineproject.ReviewReceipt.review.dao;
 
-import nineproject.ReviewReceipt.model.ReviewVO;
+import nineproject.ReviewReceipt.model.vo.ReviewVO;
 //import org.apache.ibatis.session.SqlSession;
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

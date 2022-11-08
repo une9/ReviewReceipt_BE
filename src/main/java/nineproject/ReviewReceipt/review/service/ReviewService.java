@@ -1,8 +1,8 @@
 package nineproject.ReviewReceipt.review.service;
 
-import nineproject.ReviewReceipt.model.ReviewVO;
+import nineproject.ReviewReceipt.model.vo.ReviewVO;
 import nineproject.ReviewReceipt.review.ReviewMapper;
-import nineproject.ReviewReceipt.model.ReviewDetailVO;
+import nineproject.ReviewReceipt.model.vo.ReviewDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,10 +31,10 @@ public class ReviewService {
         return rvId;
     }
 
-    public int updateReview(int rvid, ReviewVO review) {
+    public int updateReview(int rvid, ReviewDetailVO review_detail) {
         Map<String, Object> params = new HashMap<>();
         params.put("rvid", rvid);
-        params.put("review", review);
+        params.put("review_detail", review_detail);
         return rm.updateRv(params);
     }
 

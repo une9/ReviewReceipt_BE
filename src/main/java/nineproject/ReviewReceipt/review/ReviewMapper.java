@@ -1,7 +1,7 @@
 package nineproject.ReviewReceipt.review;
 
-import nineproject.ReviewReceipt.model.ReviewDetailVO;
-import nineproject.ReviewReceipt.model.ReviewVO;
+import nineproject.ReviewReceipt.model.vo.ReviewDetailVO;
+import nineproject.ReviewReceipt.model.vo.ReviewVO;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package nineproject.ReviewReceipt.review.dao;
 
-import nineproject.ReviewReceipt.model.ReviewVO;
+import nineproject.ReviewReceipt.model.vo.ReviewVO;
 
 import java.util.List;
 

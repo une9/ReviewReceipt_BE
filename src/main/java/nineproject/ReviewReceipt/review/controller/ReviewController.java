@@ -1,8 +1,8 @@
 package nineproject.ReviewReceipt.review.controller;
 
-import nineproject.ReviewReceipt.model.ReviewDetailVO;
+import nineproject.ReviewReceipt.model.vo.ReviewDetailVO;
 import nineproject.ReviewReceipt.review.service.ReviewService;
-import nineproject.ReviewReceipt.model.ReviewVO;
+import nineproject.ReviewReceipt.model.vo.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,8 +31,8 @@ public class ReviewController {
     }
 
     @PatchMapping("/update/{rvid}")
-    public int updateReview(@PathVariable int rvid, ReviewVO review) {
-        rs.updateReview(rvid, review);
+    public int updateReview(@PathVariable int rvid, ReviewDetailVO review_detail) {
+        rs.updateReview(rvid, review_detail);
         return rvid;
     }
 
