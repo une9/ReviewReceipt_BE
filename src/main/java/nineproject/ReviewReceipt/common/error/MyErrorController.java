@@ -14,7 +14,8 @@ public class MyErrorController {
         final ErrorResponse response = ErrorResponse
                 .create()
                 .status(e.getStatus())
-                .message(e.getMsg());
+                .message(e.getMsg())
+                .code(e.getCode());
 //                .error(e.getError());
 
         return new ResponseEntity<>(response, e.getStatus());

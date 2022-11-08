@@ -1,10 +1,13 @@
 package nineproject.ReviewReceipt.user.controller;
 
+import nineproject.ReviewReceipt.model.SignUpFormVO;
 import nineproject.ReviewReceipt.model.UserVO;
 import nineproject.ReviewReceipt.model.webPwChangeVO;
 import nineproject.ReviewReceipt.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/user")
@@ -18,10 +21,10 @@ public class UserController {
         return us.getUserInfo(userId);
     }
 
-    @PostMapping("/insert")
-    public Integer insertUser(UserVO user) {
-        return us.insertUser(user);
-    }
+//    @PostMapping("/insert")
+//    public Integer insertUser(UserVO user) {
+//        return us.insertUser(user);
+//    }
 
     @PatchMapping("/update/{userId}/username")
     public int updateUsername(String username, @PathVariable int userId) {
@@ -29,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping("/update/{userId}/userwebpw")
-    public Object updateUserWebPw(webPwChangeVO body, @PathVariable int userId) {
+    public int updateUserWebPw(webPwChangeVO body, @PathVariable int userId) {
         String newPw = body.getNewPw();
         String newPwCheck = body.getNewPwCheck();
         String prevPw = body.getPrevPw();
@@ -44,6 +47,15 @@ public class UserController {
     @GetMapping("/check/username")
     public boolean isPossibleUsername(String username) {
         return us.isPossibleUsername(username.trim());
+    }
+
+    @PostMapping("/login")
+    public HashMap<String, Object> login(UserVO user) {
+        return us.login(user.getUSER_WEBID(), user.getUSER_WEBPW());
+    }
+    @PostMapping("/signup")
+    public int signup(SignUpFormVO form) {
+        return us.signup(form);
     }
 
 }

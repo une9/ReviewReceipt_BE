@@ -15,6 +15,8 @@ public class ErrorResponse {
 
     private HttpStatus status; // HTTP 상태 저장
 
+    private String code;    // 예외코드 저장
+
 //    private Error error;
 
     static public ErrorResponse create() {
@@ -28,6 +30,11 @@ public class ErrorResponse {
 
     public ErrorResponse message(String message) {
         this.message = message;
+        return this;
+    }
+
+    public ErrorResponse code(String code) {
+        this.code = code;
         return this;
     }
 
