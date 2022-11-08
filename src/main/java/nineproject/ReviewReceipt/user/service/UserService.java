@@ -21,7 +21,6 @@ public class UserService {
     }
 
     public Integer insertUser(UserVO user) {
-        System.out.println("service-user = " + user);
         return um.insertUser(user);
     }
 
