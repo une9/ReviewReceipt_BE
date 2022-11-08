@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="nineproject.ReviewReceipt.review.ReviewMapper">
-    <insert id="insertRv" parameterType="nineproject.ReviewReceipt.model.vo.ReviewVO" useGeneratedKeys="true" keyProperty="REVIEW_ID">
+    <insert id="insertRv" parameterType="nineproject.ReviewReceipt.model.ReviewVO" useGeneratedKeys="true" keyProperty="REVIEW_ID">
 
             INSERT INTO review
             (

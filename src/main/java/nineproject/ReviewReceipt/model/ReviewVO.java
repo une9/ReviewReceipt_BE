@@ -1,4 +1,4 @@
-package nineproject.ReviewReceipt.model.vo;
+package nineproject.ReviewReceipt.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

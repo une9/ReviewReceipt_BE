@@ -1,8 +1,8 @@
 package nineproject.ReviewReceipt.review.service;
 
-import nineproject.ReviewReceipt.model.vo.ReviewVO;
+import nineproject.ReviewReceipt.model.ReviewVO;
 import nineproject.ReviewReceipt.review.ReviewMapper;
-import nineproject.ReviewReceipt.model.vo.ReviewDetailVO;
+import nineproject.ReviewReceipt.model.ReviewDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

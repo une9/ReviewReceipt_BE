@@ -1,8 +1,8 @@
 package nineproject.ReviewReceipt.review.controller;
 
-import nineproject.ReviewReceipt.model.vo.ReviewDetailVO;
+import nineproject.ReviewReceipt.model.ReviewDetailVO;
 import nineproject.ReviewReceipt.review.service.ReviewService;
-import nineproject.ReviewReceipt.model.vo.ReviewVO;
+import nineproject.ReviewReceipt.model.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
