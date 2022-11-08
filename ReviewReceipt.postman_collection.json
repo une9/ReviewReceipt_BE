@@ -1,0 +1,563 @@
+{
+	"info": {
+		"_postman_id": "c2baf240-b015-47bb-b741-020848b47a1b",
+		"name": "ReviewReceipt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22417981"
+	},
+	"item": [
+		{
+			"name": "REVIEW",
+			"item": [
+				{
+					"name": "INSERT REVIEW",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "USER_ID",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "CREATE_DATE",
+									"value": "2022-11-07 16:11:01",
+									"type": "text"
+								},
+								{
+									"key": "MODIFY_DATE",
+									"value": "2022-11-07 16:11:01",
+									"type": "text"
+								},
+								{
+									"key": "REVIEW_TYPE",
+									"value": "MOV",
+									"type": "text"
+								},
+								{
+									"key": "DO_DATE",
+									"value": "2022-10-01",
+									"type": "text"
+								},
+								{
+									"key": "REVIEW_TITLE",
+									"value": "테스트제목333 ",
+									"type": "text"
+								},
+								{
+									"key": "PUBLISH_DATE",
+									"value": "2022-08-01",
+									"type": "text"
+								},
+								{
+									"key": "ABSTRACT_TXT",
+									"value": "화요일이라니니ㅣㅣ",
+									"type": "text"
+								},
+								{
+									"key": "PUBLISHER",
+									"value": "신세계 ",
+									"type": "text"
+								},
+								{
+									"key": "DIRECTOR",
+									"value": "나 ",
+									"type": "text"
+								},
+								{
+									"key": "PLAYER",
+									"value": "나 ",
+									"type": "text"
+								},
+								{
+									"key": "FAVORITE_LINE",
+									"value": "퇴근시켜",
+									"type": "text"
+								},
+								{
+									"key": "SHOW_TYPE",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "PLACE",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/review/insert",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"review",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE REVIEW",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "USER_ID",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "CREATE_DATE",
+									"value": "2022-11-07 13:55:00",
+									"type": "text"
+								},
+								{
+									"key": "MODIFY_DATE",
+									"value": "2022-11-08 09:24:00",
+									"type": "text"
+								},
+								{
+									"key": "REVIEW_TYPE",
+									"value": "MOV",
+									"type": "text"
+								},
+								{
+									"key": "DO_DATE",
+									"value": "2022-11-07",
+									"type": "text"
+								},
+								{
+									"key": "REVIEW_TITLE",
+									"value": "집에보내줘ㅓㅓ ",
+									"type": "text"
+								},
+								{
+									"key": "PUBLISH_DATE",
+									"value": "2022-08-01",
+									"type": "text"
+								},
+								{
+									"key": "ABSTRACT_TXT",
+									"value": "수정수정수",
+									"type": "text"
+								},
+								{
+									"key": "PUBLISHER",
+									"value": "신세계 ",
+									"type": "text"
+								},
+								{
+									"key": "DIRECTOR",
+									"value": "나 ",
+									"type": "text"
+								},
+								{
+									"key": "PLAYER",
+									"value": "나 ",
+									"type": "text"
+								},
+								{
+									"key": "FAVORITE_LINE",
+									"value": "눕고싶어~",
+									"type": "text"
+								},
+								{
+									"key": "SHOW_TYPE",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "PLACE",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "DETAIL_REVIEW_TEXT",
+									"value": "디테일12345 ",
+									"type": "text"
+								},
+								{
+									"key": "LIST_1_TITLE",
+									"value": "부문1111111다시수정  ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/review/update/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"review",
+								"update",
+								"3"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET REVIEWS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/review",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE REVIEW",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/review/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"review",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE REVIEW",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/review/delete/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"review",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "GET USER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "MBR_NO",
+									"value": "0100003",
+									"type": "text"
+								},
+								{
+									"key": "USERNAME",
+									"value": "제다",
+									"type": "text"
+								},
+								{
+									"key": "USER_WEBID",
+									"value": "star",
+									"type": "text"
+								},
+								{
+									"key": "USER_WEBPW",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/insert",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USERNAME",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/update/2/username?username=째리 ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"update",
+								"2",
+								"username"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "째리 "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/delete/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK POSSIBLE USERNAME",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/check/username?username=째리 ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"check",
+								"username"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "째리 "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE WEB PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "newPw",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "newPwCheck",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "prevPw",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/update/3/userwebpw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"update",
+								"3",
+								"userwebpw"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "USER_WEBID",
+									"value": "f",
+									"type": "text"
+								},
+								{
+									"key": "USER_WEBPW",
+									"value": "g",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SIGNUP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "USERNAME",
+									"value": "퇴근요정",
+									"type": "text"
+								},
+								{
+									"key": "USER_WEBID",
+									"value": "abc1234",
+									"type": "text"
+								},
+								{
+									"key": "USER_WEBPW",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "USER_WEBPW_CHECK",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
