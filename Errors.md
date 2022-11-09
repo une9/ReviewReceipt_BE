@@ -25,4 +25,8 @@ https://velog.io/@jupiter-j/SpringSecurity-JWT-%EB%A1%9C%EA%B7%B8%EC%9D%B8%EC%8B
 - UserService 파일이 validation 함수들과 같이 있어 너무 길어져서 UserServiceUtil로 별도 클래스 분리
 https://okky.kr/articles/508171
 
+- 로그인해야 하는 기능 테스트
+    https://shinsunyoung.tistory.com/70
+    https://velog.io/@jkijki12/Spring-MockMvc
+
 

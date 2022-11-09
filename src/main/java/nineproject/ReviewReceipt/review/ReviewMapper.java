@@ -15,6 +15,9 @@ public interface ReviewMapper {
     @Select("SELECT * FROM review WHERE status != 0 AND IS_PUBLIC = 1")
     List<ReviewVO> selectAll();
 
+    @Select("SELECT * FROM review WHERE status != 0 AND USER_ID = #{userId}")
+    List<ReviewVO> selectMyReviews(Integer userId);
+
     @Select("SELECT * FROM review LEFT JOIN review_detail USING (review_id) WHERE review_id = #{rvid}")
     ReviewDetailVO selectByRvId(int rvid);
 

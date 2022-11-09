@@ -1,7 +1,7 @@
 package nineproject.ReviewReceipt.user.service;
 
-import nineproject.ReviewReceipt.common.error.InvalidValueException;
-import nineproject.ReviewReceipt.common.error.NullValueException;
+import nineproject.ReviewReceipt.common.exception.InvalidValueException;
+import nineproject.ReviewReceipt.common.exception.NullValueException;
 import nineproject.ReviewReceipt.model.SignUpFormVO;
 import nineproject.ReviewReceipt.model.UserVO;
 import nineproject.ReviewReceipt.user.UserMapper;

@@ -1,7 +1,9 @@
 package nineproject.ReviewReceipt.user.service;
 
-import nineproject.ReviewReceipt.common.error.InvalidValueException;
-import nineproject.ReviewReceipt.common.error.NullValueException;
+import nineproject.ReviewReceipt.common.constants.sessionConstants;
+import nineproject.ReviewReceipt.common.exception.InvalidValueException;
+import nineproject.ReviewReceipt.common.exception.NullValueException;
+import nineproject.ReviewReceipt.model.LoginUserInfo;
 import nineproject.ReviewReceipt.model.SignUpFormVO;
 import nineproject.ReviewReceipt.model.UserVO;
 import nineproject.ReviewReceipt.user.UserMapper;
@@ -9,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 import static nineproject.ReviewReceipt.common.error.ErrorMessage.*;
@@ -58,7 +62,7 @@ public class UserService {
         return um.deleteUser(userId);
     }
 
-    public HashMap<String, Object> login(String webId, String rawPW) {
+    public LoginUserInfo login(HttpServletRequest request, String webId, String rawPW) {
         if (webId == null || webId.equals("")) {
             throw new NullValueException(NO_WEBID);
         }
@@ -73,9 +77,15 @@ public class UserService {
             throw new NullValueException(NOT_CORRECT_INFO);
         }
 
-        HashMap<String, Object> loginUserInfo = new HashMap<>();
-        loginUserInfo.put("userId", user.getUSER_ID());
-        loginUserInfo.put("nickname", user.getUSERNAME());
+        // 로그인 사용자 정보
+        Integer userId = user.getUSER_ID();
+        String username = user.getUSERNAME();
+
+        LoginUserInfo loginUserInfo = new LoginUserInfo(userId, username);
+
+        // 로그인 세션 저장
+        HttpSession session = request.getSession();                     // 세션이 있으면 있는 세션 반환, 없으면 신규 세션을 생성하여 반환
+        session.setAttribute(String.valueOf(sessionConstants.LOGIN_USER_INFO), loginUserInfo);     // 세션에 로그인 회원 정보 보관
 
         return loginUserInfo;
     }

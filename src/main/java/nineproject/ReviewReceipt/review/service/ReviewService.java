@@ -17,7 +17,12 @@ public class ReviewService {
     private ReviewMapper rm;
 
     public List<ReviewVO> getAllReview() {
-        final List<ReviewVO> reviewList = rm.selectAll();
+        List<ReviewVO> reviewList = rm.selectAll();
+        return reviewList;
+    }
+
+    public List<ReviewVO> getMyReview(Integer userId) {
+        List<ReviewVO> reviewList = rm.selectMyReviews(userId);
         return reviewList;
     }
 

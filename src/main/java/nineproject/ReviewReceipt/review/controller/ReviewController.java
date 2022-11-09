@@ -1,11 +1,14 @@
 package nineproject.ReviewReceipt.review.controller;
 
+import nineproject.ReviewReceipt.common.utils.LoginUtil;
 import nineproject.ReviewReceipt.model.ReviewDetailVO;
 import nineproject.ReviewReceipt.review.service.ReviewService;
 import nineproject.ReviewReceipt.model.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -18,6 +21,12 @@ public class ReviewController {
     @GetMapping
     public List<ReviewVO> getAllReviews() {
         return rs.getAllReview();
+    }
+
+    @GetMapping("/mine")
+    public List<ReviewVO> getMyReviews(HttpSession session) {
+        Integer userId = LoginUtil.getLoginUserId(session);
+        return rs.getMyReview(userId);
     }
 
     @GetMapping("/{rvid}")

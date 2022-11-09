@@ -19,8 +19,10 @@ public enum ErrorMessage {
 
     // EXISTING VALUE
     EXISTING_USERNAME("이미 사용중인 닉네임입니다.", "EXISTING_USERNAME"),
-    EXISTING_WEBID("이미 사용중인 아이디입니다.", "EXISTING_WEBID");
+    EXISTING_WEBID("이미 사용중인 아이디입니다.", "EXISTING_WEBID"),
 
+    // NOT LOGIN
+    NOT_LOGGED_IN("로그인 후 시도해주세요", "NOT_LOGGED_IN");
 
 
     private final String message;

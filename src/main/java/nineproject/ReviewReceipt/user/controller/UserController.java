@@ -1,5 +1,6 @@
 package nineproject.ReviewReceipt.user.controller;
 
+import nineproject.ReviewReceipt.model.LoginUserInfo;
 import nineproject.ReviewReceipt.model.SignUpFormVO;
 import nineproject.ReviewReceipt.model.UserVO;
 import nineproject.ReviewReceipt.model.webPwChangeVO;
@@ -7,6 +8,7 @@ import nineproject.ReviewReceipt.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @RestController
@@ -50,8 +52,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public HashMap<String, Object> login(UserVO user) {
-        return us.login(user.getUSER_WEBID(), user.getUSER_WEBPW());
+    public LoginUserInfo login(HttpServletRequest request, UserVO user) {
+        return us.login(request, user.getUSER_WEBID(), user.getUSER_WEBPW());
     }
     @PostMapping("/signup")
     public int signup(SignUpFormVO form) {
