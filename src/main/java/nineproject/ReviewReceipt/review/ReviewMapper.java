@@ -12,10 +12,10 @@ import java.util.Map;
 @Repository
 public interface ReviewMapper {
 
-    @Select("SELECT * FROM review WHERE status != 0")
+    @Select("SELECT * FROM review WHERE status != 0 AND IS_PUBLIC = 1")
     List<ReviewVO> selectAll();
 
-    @Select("SELECT * FROM review JOIN review_detail USING (review_id) WHERE review_id = #{rvid}")
+    @Select("SELECT * FROM review LEFT JOIN review_detail USING (review_id) WHERE review_id = #{rvid}")
     ReviewDetailVO selectByRvId(int rvid);
 
     @Select("SELECT * FROM review WHERE user_id = #{userid}")

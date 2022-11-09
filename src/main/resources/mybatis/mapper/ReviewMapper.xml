@@ -20,6 +20,7 @@
                 FAVORITE_LINE,
                 SHOW_TYPE,
                 PLACE,
+                IS_PUBLIC,
                 STATUS
             ) VALUE (
                 #{USER_ID},
@@ -36,6 +37,7 @@
                 #{FAVORITE_LINE},
                 #{SHOW_TYPE},
                 #{PLACE},
+                #{IS_PUBLIC},
                 1
             )
     </insert>
@@ -56,7 +58,8 @@
             PLAYER = #{review_detail.PLAYER},
             FAVORITE_LINE = #{review_detail.FAVORITE_LINE},
             SHOW_TYPE = #{review_detail.SHOW_TYPE},
-            PLACE = #{review_detail.PLACE}
+            PLACE = #{review_detail.PLACE},
+            IS_PUBLIC = #{review_detail.IS_PUBLIC}
         WHERE
             REVIEW_ID = #{rvid};
     <!--review detail-->

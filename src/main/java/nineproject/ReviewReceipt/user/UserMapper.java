@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @Mapper
 @Repository
@@ -34,8 +33,8 @@ public interface UserMapper {
 
     int deleteUser(int userId);
 
-    @Select("SELECT * FROM USER WHERE USER_WEBID = #{webId} AND USER_WEBPW = #{webPw}")
-    UserVO login(@Param("webId") String webId, @Param("webPw") String webPw);
+    @Select("SELECT * FROM USER WHERE USER_WEBID = #{webId}")
+    UserVO login(@Param("webId") String webId);
     @Select("SELECT MBR_NO FROM USER ORDER BY MBR_NO DESC LIMIT 1")
     String getLastMbrNo();
 }

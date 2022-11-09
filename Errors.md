@@ -13,4 +13,11 @@
 ## 에러처리
 *** https://bamdule.tistory.com/92
 
-##
+## 221109 (수)
+
+- spring security로 비밀번호 암호화하기
+https://seungyooon.tistory.com/245
+https://velog.io/@jupiter-j/SpringSecurity-JWT-%EB%A1%9C%EA%B7%B8%EC%9D%B8%EC%8B%9C-401-%EC%97%90%EB%9F%AC
+
+최근에 구현 방식이 변경되어 다수의 블로그에 있는 방식 그대로 적용 어려움
+https://velog.io/@pjh612/Deprecated%EB%90%9C-WebSecurityConfigurerAdapter-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8C%80%EC%B2%98%ED%95%98%EC%A7%80

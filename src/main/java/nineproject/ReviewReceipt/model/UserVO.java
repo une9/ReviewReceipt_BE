@@ -11,6 +11,7 @@ public class UserVO {
     private String MBR_NO;
     private String USERNAME;
     private String USER_WEBID;
+    private String RAW_PW;      // 암호화되지 않은 비밀번호 (개발용)
     private String USER_WEBPW;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

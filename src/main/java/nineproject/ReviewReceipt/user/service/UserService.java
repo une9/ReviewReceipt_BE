@@ -6,6 +6,7 @@ import nineproject.ReviewReceipt.model.SignUpFormVO;
 import nineproject.ReviewReceipt.model.UserVO;
 import nineproject.ReviewReceipt.user.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -17,6 +18,9 @@ public class UserService {
 
     @Autowired
     UserMapper um;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public UserVO getUserInfo(int userId) {
         return um.getUser(userId);
@@ -57,18 +61,18 @@ public class UserService {
         return um.deleteUser(userId);
     }
 
-    public HashMap<String, Object> login(String webId, String webPw) {
+    public HashMap<String, Object> login(String webId, String rawPW) {
         if (webId == null || webId.equals("")) {
             throw new NullValueException(NO_WEBID);
         }
 
-        if (webPw == null || webPw.equals("")) {
+        if (rawPW == null || rawPW.equals("")) {
             throw new NullValueException(NO_WEBPW);
         }
 
-        UserVO user = um.login(webId, webPw);
+        UserVO user = um.login(webId);
 
-        if (user == null) {
+        if (!isValidLogin(user, rawPW)) {
             throw new NullValueException(NOT_CORRECT_INFO);
         }
 
@@ -79,7 +83,7 @@ public class UserService {
         return loginUserInfo;
     }
 
-    public String padLeftWithZero(int num) {
+    public static String padLeftWithZero(int num) {
         return String.format("%05d", num);
     }
 
@@ -95,6 +99,12 @@ public class UserService {
 
         // 닉네임 공백제거
         form.setUSERNAME(form.getUSERNAME().trim());
+
+        // 비밀번호 암호화 & 원래 암호 저장 (개발용)
+        String rawPw = form.getUSER_WEBPW();
+        String encodedPw = passwordEncoder.encode(rawPw);
+        form.setRAW_PW(rawPw);
+        form.setUSER_WEBPW(encodedPw);
 
         return um.insertUser(form);
     }
@@ -124,11 +134,11 @@ public class UserService {
 
         // 올바른 값 체크
         if (!isPossibleUsername(username)) {    // 닉네임 중복체크
-            throw new InvalidValueException(IMPOSSIBLE_USERNAME);
+            throw new InvalidValueException(EXISTING_USERNAME);
         }
 
         if (!isPossibleUserWebId(webId)) {      // 아이디 중복체크
-            throw new InvalidValueException(IMPOSSIBLE_WEBID);
+            throw new InvalidValueException(EXISTING_WEBID);
         }
 
         if (!webPw.equals(webPwCheck)) {        // 비밀번호 - 비밀번호 확인 일치 체크
@@ -146,5 +156,10 @@ public class UserService {
         return um.countSameUserWebId(webId) <= 0;
     }
 
+    public boolean isValidLogin(UserVO user, String rawPW) {
+        if (user == null) return false;
+
+        return passwordEncoder.matches(rawPW, user.getUSER_WEBPW());
+    }
 
 }
