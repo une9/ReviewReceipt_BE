@@ -22,7 +22,10 @@ public enum ErrorMessage {
     EXISTING_WEBID("이미 사용중인 아이디입니다.", "EXISTING_WEBID"),
 
     // NOT LOGIN
-    NOT_LOGGED_IN("로그인 후 시도해주세요", "NOT_LOGGED_IN");
+    NOT_LOGGED_IN("로그인 후 시도해주세요", "NOT_LOGGED_IN"),
+
+    // LEAVED USER
+    LEAVED_USER("탈퇴한 회원입니다.", "LEAVED_USER");
 
 
     private final String message;

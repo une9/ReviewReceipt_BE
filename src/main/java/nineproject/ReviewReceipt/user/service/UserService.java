@@ -2,6 +2,7 @@ package nineproject.ReviewReceipt.user.service;
 
 import nineproject.ReviewReceipt.common.constants.sessionConstants;
 import nineproject.ReviewReceipt.common.exception.InvalidValueException;
+import nineproject.ReviewReceipt.common.exception.LeavedUserException;
 import nineproject.ReviewReceipt.common.exception.NullValueException;
 import nineproject.ReviewReceipt.model.LoginUserInfo;
 import nineproject.ReviewReceipt.model.SignUpFormVO;
@@ -28,7 +29,12 @@ public class UserService {
     PasswordEncoder passwordEncoder;
 
     public UserVO getUserInfo(int userId) {
-        return um.getUser(userId);
+        UserVO user = um.getUser(userId);
+
+        if (!user.getSTATUS()) {
+            throw new LeavedUserException(LEAVED_USER);
+        }
+        return user;
     }
 
     public int updateUsername(int userId, String username) {

@@ -8,6 +8,6 @@ import org.springframework.http.HttpStatus;
 public class InvalidValueException extends MyException {
 
     public InvalidValueException(ErrorMessage msg) {
-        super(HttpStatus.BAD_REQUEST, msg);
+        super(HttpStatus.CONFLICT, msg);
     }
 }
