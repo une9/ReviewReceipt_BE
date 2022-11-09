@@ -26,7 +26,10 @@ public interface ReviewMapper {
 
     Integer insertRv(ReviewVO rv);
 
+    int insertRvDetail(Map<String, Object> params);
+
     int updateRv(Map<String, Object> params);
+    int updateRvDetail(Map<String, Object> params);
 
     int deleteRv(int rvid);
 

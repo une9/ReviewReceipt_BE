@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static nineproject.ReviewReceipt.review.service.ReviewServiceUtil.*;
+
 @Service
 public class ReviewService {
 
@@ -30,17 +32,37 @@ public class ReviewService {
         return rm.selectByRvId(rvid);
     }
 
-    public Integer insertReview(ReviewVO review) {
-        rm.insertRv(review);
+    public Integer insertReview(ReviewDetailVO review) {
+        // 리뷰 저장
+        rm.insertRv((ReviewVO) review);
         Integer rvId = review.getREVIEW_ID();
+
+        // 리뷰디테일 존재 시 저장
+        if (review.getYES_DETAIL()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("rvId", rvId);
+            params.put("review_detail", review);
+            rm.insertRvDetail(params);
+        }
+
         return rvId;
     }
 
-    public int updateReview(int rvid, ReviewDetailVO review_detail) {
+    public int updateReview(int rvId, ReviewDetailVO review) {
+
+        // params 생성
         Map<String, Object> params = new HashMap<>();
-        params.put("rvid", rvid);
-        params.put("review_detail", review_detail);
-        return rm.updateRv(params);
+        params.put("rvId", rvId);
+        params.put("review_detail", review);
+
+        // 리뷰 업데이트
+        rm.updateRv(params);
+
+        // 리뷰디테일 존재 시 업데이트
+        if (review.getYES_DETAIL()) {
+            rm.updateRvDetail(params);
+        }
+        return rvId;
     }
 
     public void deleteReview(int rvid) {

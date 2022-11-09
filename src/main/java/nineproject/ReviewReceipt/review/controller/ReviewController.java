@@ -35,7 +35,7 @@ public class ReviewController {
     }
 
     @PostMapping("/insert")
-    public Integer insertReview(ReviewVO review) {
+    public Integer insertReview(ReviewDetailVO review) {
         return rs.insertReview(review);
     }
 

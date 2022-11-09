@@ -37,6 +37,7 @@ public class ReviewVO {
     private String FAVORITE_LINE;
     private String SHOW_TYPE;
     private String PLACE;
+    private Boolean YES_DETAIL;     // 연결된 리뷰디테일 존재 여부
     private Boolean IS_PUBLIC;  // 공개-비공개
     private Boolean STATUS;     // 삭제 여부
 

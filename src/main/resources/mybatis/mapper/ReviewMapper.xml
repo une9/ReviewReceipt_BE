@@ -3,7 +3,6 @@
 
 <mapper namespace="nineproject.ReviewReceipt.review.ReviewMapper">
     <insert id="insertRv" parameterType="nineproject.ReviewReceipt.model.ReviewVO" useGeneratedKeys="true" keyProperty="REVIEW_ID">
-
             INSERT INTO review
             (
                 USER_ID,
@@ -20,6 +19,7 @@
                 FAVORITE_LINE,
                 SHOW_TYPE,
                 PLACE,
+                YES_DETAIL,
                 IS_PUBLIC,
                 STATUS
             ) VALUE (
@@ -37,9 +37,62 @@
                 #{FAVORITE_LINE},
                 #{SHOW_TYPE},
                 #{PLACE},
+                #{YES_DETAIL},
                 #{IS_PUBLIC},
                 1
             )
+    </insert>
+
+    <insert id="insertRvDetail" parameterType="hashMap">
+        INSERT INTO
+            review_detail
+        (
+            REVIEW_ID,
+            DETAIL_REVIEW_TEXT,
+            LIST_1_TITLE,
+            LIST_1_SCORE_TOTAL,
+            LIST_1_SCORE,
+            LIST_1_DESC,
+            LIST_2_TITLE,
+            LIST_2_SCORE_TOTAL,
+            LIST_2_SCORE,
+            LIST_2_DESC,
+            LIST_3_TITLE,
+            LIST_3_SCORE_TOTAL,
+            LIST_3_SCORE,
+            LIST_3_DESC,
+            LIST_4_TITLE,
+            LIST_4_SCORE_TOTAL,
+            LIST_4_SCORE,
+            LIST_4_DESC,
+            LIST_5_TITLE,
+            LIST_5_SCORE_TOTAL,
+            LIST_5_SCORE,
+            LIST_5_DESC
+        ) VALUE (
+            #{rvId},
+            #{review_detail.DETAIL_REVIEW_TEXT},
+            #{review_detail.LIST_1_TITLE},
+            #{review_detail.LIST_1_SCORE_TOTAL},
+            #{review_detail.LIST_1_SCORE},
+            #{review_detail.LIST_1_DESC},
+            #{review_detail.LIST_2_TITLE},
+            #{review_detail.LIST_2_SCORE_TOTAL},
+            #{review_detail.LIST_2_SCORE},
+            #{review_detail.LIST_2_DESC},
+            #{review_detail.LIST_3_TITLE},
+            #{review_detail.LIST_3_SCORE_TOTAL},
+            #{review_detail.LIST_3_SCORE},
+            #{review_detail.LIST_3_DESC},
+            #{review_detail.LIST_4_TITLE},
+            #{review_detail.LIST_4_SCORE_TOTAL},
+            #{review_detail.LIST_4_SCORE},
+            #{review_detail.LIST_4_DESC},
+            #{review_detail.LIST_5_TITLE},
+            #{review_detail.LIST_5_SCORE_TOTAL},
+            #{review_detail.LIST_5_SCORE},
+            #{review_detail.LIST_5_DESC}
+        )
     </insert>
 
     <update id="updateRv" parameterType="Hashmap">
@@ -61,8 +114,11 @@
             PLACE = #{review_detail.PLACE},
             IS_PUBLIC = #{review_detail.IS_PUBLIC}
         WHERE
-            REVIEW_ID = #{rvid};
-    <!--review detail-->
+            REVIEW_ID = #{rvId}
+    </update>
+
+    <update id="updateRvDetail" parameterType="Hashmap">
+        <!--review detail-->
         UPDATE
             review_detail
         SET
@@ -88,8 +144,7 @@
             LIST_5_SCORE = #{review_detail.LIST_5_SCORE},
             LIST_5_DESC = #{review_detail.LIST_5_DESC}
         WHERE
-            REVIEW_ID = #{rvid};
-
+            REVIEW_ID = #{rvId}
     </update>
 
     <update id="deleteRv" parameterType="int">
