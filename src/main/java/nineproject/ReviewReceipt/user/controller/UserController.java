@@ -45,8 +45,8 @@ public class UserController {
     }
 
     @GetMapping("/check/username")
-    public boolean isPossibleUsername(String username) {
-        return us.isPossibleUsername(username.trim());
+    public boolean checkPossibleUsername(String username) {
+        return us.checkPossibleUsername(username.trim());
     }
 
     @PostMapping("/login")

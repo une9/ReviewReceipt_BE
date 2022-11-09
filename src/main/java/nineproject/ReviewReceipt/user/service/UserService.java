@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 
 import static nineproject.ReviewReceipt.common.error.ErrorMessage.*;
+import static nineproject.ReviewReceipt.user.service.UserServiceUtil.*;
 
 @Service
 public class UserService {
@@ -24,10 +25,6 @@ public class UserService {
 
     public UserVO getUserInfo(int userId) {
         return um.getUser(userId);
-    }
-
-    public boolean isCorrectPrevPw(String userWebPw, int userId) {
-        return userWebPw.equals(um.getPrevUserWebPw(userId));
     }
 
     public int updateUsername(int userId, String username) {
@@ -47,7 +44,7 @@ public class UserService {
             throw new InvalidValueException(SAME_WITH_PREV_PW);
         }
 
-        if (!isCorrectPrevPw(prevPw, userId)) {
+        if (!isCorrectPrevPw(um, prevPw, userId)) {
             throw new InvalidValueException(NOT_CORRECT_PREV_PW);
         }
 
@@ -72,7 +69,7 @@ public class UserService {
 
         UserVO user = um.login(webId);
 
-        if (!isValidLogin(user, rawPW)) {
+        if (!isValidLogin(passwordEncoder, user, rawPW)) {
             throw new NullValueException(NOT_CORRECT_INFO);
         }
 
@@ -83,17 +80,13 @@ public class UserService {
         return loginUserInfo;
     }
 
-    public static String padLeftWithZero(int num) {
-        return String.format("%05d", num);
-    }
-
     public int signup(SignUpFormVO form) {
         // validation check
-        isValidSignupForm(form);
+        isValidSignupForm(um, form);
 
         // 회원번호 저장
         String lastMbrNo = um.getLastMbrNo();
-        Integer mbrNum = Integer.valueOf(lastMbrNo.substring(2)) + 1;
+        int mbrNum = Integer.parseInt(lastMbrNo.substring(2)) + 1;
         String thisMbrNo = "01" + padLeftWithZero(mbrNum);
         form.setMBR_NO(thisMbrNo);
 
@@ -109,57 +102,8 @@ public class UserService {
         return um.insertUser(form);
     }
 
-    public boolean isValidSignupForm(SignUpFormVO form) {
-        String username = form.getUSERNAME();
-        String webId = form.getUSER_WEBID();
-        String webPw = form.getUSER_WEBPW();
-        String webPwCheck = form.getUSER_WEBPW_CHECK();
-
-        // 빈 값 체크
-        if (username == null || username.equals("")) {
-            throw new NullValueException(NO_USERNAME);
-        }
-
-        if (webId == null || webId.equals("")) {
-            throw new NullValueException(NO_WEBID);
-        }
-
-        if (webPw == null || webPw.equals("")) {
-            throw new NullValueException(NO_WEBPW);
-        }
-
-        if (webPwCheck == null || webPwCheck.equals("")) {
-            throw new NullValueException(NO_WEBPWCHECK);
-        }
-
-        // 올바른 값 체크
-        if (!isPossibleUsername(username)) {    // 닉네임 중복체크
-            throw new InvalidValueException(EXISTING_USERNAME);
-        }
-
-        if (!isPossibleUserWebId(webId)) {      // 아이디 중복체크
-            throw new InvalidValueException(EXISTING_WEBID);
-        }
-
-        if (!webPw.equals(webPwCheck)) {        // 비밀번호 - 비밀번호 확인 일치 체크
-            throw new InvalidValueException(PW_NOT_CORRESPOND);
-        }
-
-        return true;
-    }
-
-    public boolean isPossibleUsername(String username) {
-        return um.countSameUsername(username) <= 0;
-    }
-
-    public boolean isPossibleUserWebId(String webId) {
-        return um.countSameUserWebId(webId) <= 0;
-    }
-
-    public boolean isValidLogin(UserVO user, String rawPW) {
-        if (user == null) return false;
-
-        return passwordEncoder.matches(rawPW, user.getUSER_WEBPW());
+    public boolean checkPossibleUsername(String username) {
+        return isPossibleUsername(um, username);
     }
 
 }
