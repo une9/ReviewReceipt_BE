@@ -37,6 +37,8 @@ https://okky.kr/articles/508171
         - mapper.configure가 deprecated
         - 결국 그냥 필드명을 모두 소문자로 변경하고 소문자로 일치시킴
 
+## 221110 (목)
+
 - review 인서트나 업데이트할 때 각 string 필드 값들의 공백을 제거하고 넣고 싶은데 (trim), 각 필드를 수작업으로 갖고와서 get, null체크, trim, set 해주자니 너무 필드가 많고 반복작업이라 방법을 찾아봄
     - java reflection 이용
     - https://stackoverflow.com/questions/17461442/how-to-get-string-value-from-a-java-field-via-reflection
@@ -49,3 +51,11 @@ https://okky.kr/articles/508171
         - https://blog.gangnamunni.com/post/Annotation-Reflection-Entity-update/
     - 더 좋은 방법이 있다면.. 나중에 리팩토링
     - 코드는 엄청 간결해짐
+
+- DTO vs VO vs Entity
+    - 생각없이 VO라고 이름짓고 쓰고 있었는데 나혼자 만들면서도 뭔가 이게 모두 다 VO가 아닌것 같은데 라는 생각이 들었고 구글링하다가 한번 확실히 해야겠다는 생각이 들어서 개념정리
+    - https://youngjinmo.github.io/2021/04/dto-vo-entity/
+    - https://tecoble.techcourse.co.kr/post/2021-05-16-dto-vs-vo-vs-entity/ 
+    개념은 알겠는데 그래서 어디에 어떤걸 써야하는지 감이 잘 안온다..
+    - https://sas-study.tistory.com/404 오히려 여기서 이 사람이 쓰는 Param Entity Result 객체의 구분이 활용상 더 와닿음
+    - https://parkadd.tistory.com/53 사용예시가 조금 있음

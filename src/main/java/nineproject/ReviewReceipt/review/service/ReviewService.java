@@ -1,8 +1,8 @@
 package nineproject.ReviewReceipt.review.service;
 
-import nineproject.ReviewReceipt.model.ReviewVO;
+import nineproject.ReviewReceipt.model.Review;
 import nineproject.ReviewReceipt.review.ReviewMapper;
-import nineproject.ReviewReceipt.model.ReviewDetailVO;
+import nineproject.ReviewReceipt.model.ReviewDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,34 +10,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static nineproject.ReviewReceipt.review.service.ReviewServiceUtil.*;
-
 @Service
 public class ReviewService {
 
     @Autowired
     private ReviewMapper rm;
 
-    public List<ReviewVO> getAllReview() {
-        List<ReviewVO> reviewList = rm.selectAll();
+    public List<Review> getAllReview() {
+        List<Review> reviewList = rm.selectAll();
         return reviewList;
     }
 
-    public List<ReviewVO> getMyReview(Integer userId) {
-        List<ReviewVO> reviewList = rm.selectMyReviews(userId);
+    public List<Review> getMyReview(Integer userId) {
+        List<Review> reviewList = rm.selectMyReviews(userId);
         return reviewList;
     }
 
-    public ReviewDetailVO getReviewDetail(int rvid) {
+    public ReviewDetail getReviewDetail(int rvid) {
         return rm.selectByRvId(rvid);
     }
 
-    public Integer insertReview(ReviewDetailVO review) throws IllegalAccessException {
+    public Integer insertReview(ReviewDetail review) throws IllegalAccessException {
         // 문자열 데이터 공백제거
         ReviewServiceUtil.trimReviewStringFields(review);
 
         // 리뷰 저장
-        rm.insertRv((ReviewVO) review);
+        rm.insertRv((Review) review);
         Integer rvId = review.getReview_id();
 
         // 리뷰디테일 존재 시 저장
@@ -51,7 +49,7 @@ public class ReviewService {
         return rvId;
     }
 
-    public int updateReview(int rvId, ReviewDetailVO review) throws IllegalAccessException {
+    public int updateReview(int rvId, ReviewDetail review) throws IllegalAccessException {
         // 문자열 데이터 공백제거
         ReviewServiceUtil.trimReviewStringFields(review);
 

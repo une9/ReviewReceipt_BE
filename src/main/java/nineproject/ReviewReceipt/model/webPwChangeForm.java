@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @RequiredArgsConstructor
-public class webPwChangeVO {
+public class webPwChangeForm {
     private String newPw;
     private String newPwCheck;
     private String prevPw;

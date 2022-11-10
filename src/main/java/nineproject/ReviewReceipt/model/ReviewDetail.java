@@ -1,13 +1,12 @@
 package nineproject.ReviewReceipt.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @RequiredArgsConstructor
-public class ReviewDetailVO extends ReviewVO {
+public class ReviewDetail extends Review {
 
     private int review_detail_id;
     private String detail_review_text;

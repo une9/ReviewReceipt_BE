@@ -1,6 +1,5 @@
 package nineproject.ReviewReceipt.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -10,7 +9,7 @@ import java.util.Date;
 
 @Getter @Setter
 @RequiredArgsConstructor
-public class ReviewVO {
+public class Review {
 
     private Integer review_id;
     private Integer user_id;

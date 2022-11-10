@@ -1,13 +1,12 @@
 package nineproject.ReviewReceipt.review.controller;
 
 import nineproject.ReviewReceipt.common.utils.LoginUtil;
-import nineproject.ReviewReceipt.model.ReviewDetailVO;
+import nineproject.ReviewReceipt.model.ReviewDetail;
 import nineproject.ReviewReceipt.review.service.ReviewService;
-import nineproject.ReviewReceipt.model.ReviewVO;
+import nineproject.ReviewReceipt.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -19,28 +18,28 @@ public class ReviewController {
     private ReviewService rs;
 
     @GetMapping
-    public List<ReviewVO> getAllReviews() {
+    public List<Review> getAllReviews() {
         return rs.getAllReview();
     }
 
     @GetMapping("/mine")
-    public List<ReviewVO> getMyReviews(HttpSession session) {
+    public List<Review> getMyReviews(HttpSession session) {
         Integer userId = LoginUtil.getLoginUserId(session);
         return rs.getMyReview(userId);
     }
 
     @GetMapping("/{rvid}")
-    public ReviewDetailVO getReviewDetail(@PathVariable int rvid) {
+    public ReviewDetail getReviewDetail(@PathVariable int rvid) {
         return rs.getReviewDetail(rvid);
     }
 
     @PostMapping("/insert")
-    public Integer insertReview(ReviewDetailVO review) throws IllegalAccessException {
+    public Integer insertReview(ReviewDetail review) throws IllegalAccessException {
         return rs.insertReview(review);
     }
 
     @PatchMapping("/update/{rvid}")
-    public int updateReview(@PathVariable int rvid, ReviewDetailVO review_detail) throws IllegalAccessException {
+    public int updateReview(@PathVariable int rvid, ReviewDetail review_detail) throws IllegalAccessException {
         rs.updateReview(rvid, review_detail);
         return rvid;
     }

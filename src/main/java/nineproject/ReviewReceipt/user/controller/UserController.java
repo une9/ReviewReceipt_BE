@@ -1,15 +1,14 @@
 package nineproject.ReviewReceipt.user.controller;
 
 import nineproject.ReviewReceipt.model.LoginUserInfo;
-import nineproject.ReviewReceipt.model.SignUpFormVO;
-import nineproject.ReviewReceipt.model.UserVO;
-import nineproject.ReviewReceipt.model.webPwChangeVO;
+import nineproject.ReviewReceipt.model.SignUpForm;
+import nineproject.ReviewReceipt.model.User;
+import nineproject.ReviewReceipt.model.webPwChangeForm;
 import nineproject.ReviewReceipt.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 
 @RestController
 @RequestMapping("/user")
@@ -19,7 +18,7 @@ public class UserController {
     UserService us;
 
     @GetMapping("/{userId}")
-    public UserVO getUserInfo(@PathVariable int userId) {
+    public User getUserInfo(@PathVariable int userId) {
         return us.getUserInfo(userId);
     }
 
@@ -34,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/update/{userId}/userwebpw")
-    public int updateUserWebPw(webPwChangeVO body, @PathVariable int userId) {
+    public int updateUserWebPw(webPwChangeForm body, @PathVariable int userId) {
         String newPw = body.getNewPw();
         String newPwCheck = body.getNewPwCheck();
         String prevPw = body.getPrevPw();
@@ -52,11 +51,11 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public LoginUserInfo login(HttpServletRequest request, UserVO user) {
+    public LoginUserInfo login(HttpServletRequest request, User user) {
         return us.login(request, user.getUser_webid(), user.getUser_webpw());
     }
     @PostMapping("/signup")
-    public int signup(SignUpFormVO form) {
+    public int signup(SignUpForm form) {
         return us.signup(form);
     }
 

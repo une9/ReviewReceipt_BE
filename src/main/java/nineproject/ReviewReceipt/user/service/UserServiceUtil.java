@@ -2,8 +2,8 @@ package nineproject.ReviewReceipt.user.service;
 
 import nineproject.ReviewReceipt.common.exception.InvalidValueException;
 import nineproject.ReviewReceipt.common.exception.NullValueException;
-import nineproject.ReviewReceipt.model.SignUpFormVO;
-import nineproject.ReviewReceipt.model.UserVO;
+import nineproject.ReviewReceipt.model.SignUpForm;
+import nineproject.ReviewReceipt.model.User;
 import nineproject.ReviewReceipt.user.UserMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -18,7 +18,7 @@ public class UserServiceUtil {
         return String.format("%05d", num);
     }
 
-    public static boolean isValidSignupForm(UserMapper um, SignUpFormVO form) {
+    public static boolean isValidSignupForm(UserMapper um, SignUpForm form) {
         String username = form.getUsername();
         String webId = form.getUser_webid();
         String webPw = form.getUser_webpw();
@@ -65,7 +65,7 @@ public class UserServiceUtil {
         return um.countSameUserWebId(webId) <= 0;
     }
 
-    public static boolean isValidLogin(PasswordEncoder passwordEncoder, UserVO user, String rawPW) {
+    public static boolean isValidLogin(PasswordEncoder passwordEncoder, User user, String rawPW) {
         if (user == null) return false;
 
         return passwordEncoder.matches(rawPW, user.getUser_webpw());

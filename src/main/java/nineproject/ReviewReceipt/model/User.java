@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 @Getter @Setter
 @RequiredArgsConstructor
-public class UserVO {
+public class User {
     private Integer user_id;
     private String mbr_no;
     private String username;

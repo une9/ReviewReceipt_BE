@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="nineproject.ReviewReceipt.review.ReviewSearchMapper">
-    <select id="getKeywordSearchResult" parameterType="String" resultType="nineproject.ReviewReceipt.model.ReviewVO">
+    <select id="getKeywordSearchResult" parameterType="String" resultType="nineproject.ReviewReceipt.model.Review">
         SELECT *
         FROM
             REVIEW R

@@ -5,8 +5,8 @@ import nineproject.ReviewReceipt.common.exception.InvalidValueException;
 import nineproject.ReviewReceipt.common.exception.LeavedUserException;
 import nineproject.ReviewReceipt.common.exception.NullValueException;
 import nineproject.ReviewReceipt.model.LoginUserInfo;
-import nineproject.ReviewReceipt.model.SignUpFormVO;
-import nineproject.ReviewReceipt.model.UserVO;
+import nineproject.ReviewReceipt.model.SignUpForm;
+import nineproject.ReviewReceipt.model.User;
 import nineproject.ReviewReceipt.user.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,8 +28,8 @@ public class UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public UserVO getUserInfo(int userId) {
-        UserVO user = um.getUser(userId);
+    public User getUserInfo(int userId) {
+        User user = um.getUser(userId);
 
         if (!user.getStatus()) {
             throw new LeavedUserException(LEAVED_USER);
@@ -69,7 +69,7 @@ public class UserService {
     }
 
     public int deleteUser(int userId) {
-        UserVO user = getUserInfo(userId);
+        User user = getUserInfo(userId);
         // 이미 탈퇴한 회원이면 에러
         if (!user.getStatus()) {
             throw new LeavedUserException(LEAVED_USER);
@@ -87,7 +87,7 @@ public class UserService {
             throw new NullValueException(NO_WEBPW);
         }
 
-        UserVO user = um.login(webId);
+        User user = um.login(webId);
 
         if (!isValidLogin(passwordEncoder, user, rawPW)) {
             throw new NullValueException(NOT_CORRECT_INFO);
@@ -106,7 +106,7 @@ public class UserService {
         return loginUserInfo;
     }
 
-    public int signup(SignUpFormVO form) {
+    public int signup(SignUpForm form) {
         // validation check
         isValidSignupForm(um, form);
 

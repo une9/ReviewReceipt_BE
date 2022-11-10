@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @RequiredArgsConstructor
-public class SignUpFormVO {
+public class SignUpForm {
     private String mbr_no;
     private String username;
     private String user_webid;
