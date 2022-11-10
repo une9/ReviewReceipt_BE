@@ -35,5 +35,17 @@ https://okky.kr/articles/508171
     - 필드명 위에 `@JsonProperty("abstract_txt")` 이런 식으로 전부 소문자화한 annotation을 모두 달아주면 소문자로 통일시킬 수 있지만, 필드마다 일일이 달아주기엔 필드가 너무 많음..
     - https://stackoverflow.com/questions/26744885/jackson-objectmapper-upper-lower-case-issues 여기 밑에 있는 답변 중 https://stackoverflow.com/questions/7854030/configuring-objectmapper-in-spring/32842962#32842962 잭슨 configuration class를 이용하는 방식
         - mapper.configure가 deprecated
+        - 결국 그냥 필드명을 모두 소문자로 변경하고 소문자로 일치시킴
 
-
+- review 인서트나 업데이트할 때 각 string 필드 값들의 공백을 제거하고 넣고 싶은데 (trim), 각 필드를 수작업으로 갖고와서 get, null체크, trim, set 해주자니 너무 필드가 많고 반복작업이라 방법을 찾아봄
+    - java reflection 이용
+    - https://stackoverflow.com/questions/17461442/how-to-get-string-value-from-a-java-field-via-reflection
+    - https://goodgid.github.io/Java-Reflection-Field-Value/
+    - https://goodgid.github.io/Java-Reflection-Modify-Class-Information/
+    - 그런데.. 사용하지 않는 것이 좋다고 한다
+        - https://tecoble.techcourse.co.kr/post/2020-07-16-reflection-api/
+    - 하지만 여기서도 이렇게 했다
+        - https://whitepro.tistory.com/527
+        - https://blog.gangnamunni.com/post/Annotation-Reflection-Entity-update/
+    - 더 좋은 방법이 있다면.. 나중에 리팩토링
+    - 코드는 엄청 간결해짐

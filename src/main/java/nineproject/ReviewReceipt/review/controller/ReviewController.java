@@ -35,12 +35,12 @@ public class ReviewController {
     }
 
     @PostMapping("/insert")
-    public Integer insertReview(ReviewDetailVO review) {
+    public Integer insertReview(ReviewDetailVO review) throws IllegalAccessException {
         return rs.insertReview(review);
     }
 
     @PatchMapping("/update/{rvid}")
-    public int updateReview(@PathVariable int rvid, ReviewDetailVO review_detail) {
+    public int updateReview(@PathVariable int rvid, ReviewDetailVO review_detail) throws IllegalAccessException {
         rs.updateReview(rvid, review_detail);
         return rvid;
     }

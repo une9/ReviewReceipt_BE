@@ -32,7 +32,10 @@ public class ReviewService {
         return rm.selectByRvId(rvid);
     }
 
-    public Integer insertReview(ReviewDetailVO review) {
+    public Integer insertReview(ReviewDetailVO review) throws IllegalAccessException {
+        // 문자열 데이터 공백제거
+        ReviewServiceUtil.trimReviewStringFields(review);
+
         // 리뷰 저장
         rm.insertRv((ReviewVO) review);
         Integer rvId = review.getReview_id();
@@ -48,7 +51,9 @@ public class ReviewService {
         return rvId;
     }
 
-    public int updateReview(int rvId, ReviewDetailVO review) {
+    public int updateReview(int rvId, ReviewDetailVO review) throws IllegalAccessException {
+        // 문자열 데이터 공백제거
+        ReviewServiceUtil.trimReviewStringFields(review);
 
         // params 생성
         Map<String, Object> params = new HashMap<>();

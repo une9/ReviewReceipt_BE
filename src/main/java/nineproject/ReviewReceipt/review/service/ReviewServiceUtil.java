@@ -6,29 +6,30 @@ import java.lang.reflect.Field;
 
 public class ReviewServiceUtil {
 
-    // 굳이 필요있나?...보류
-    public static void trimReviewStringFields(ReviewDetailVO rd) {
+    public static void trimReviewStringFields(ReviewDetailVO rd) throws IllegalAccessException {
         // REVIEW
-        String rt = rd.getReview_title();
-        String at = rd.getAbstract_txt();
-        String fl = rd.getFavorite_line();
-
-        if (rt != null) {
-            rd.setReview_title(rt.trim());
-        }
-        if (at != null) {
-            rd.setAbstract_txt(at.trim());
-        }
-        if (fl != null) {
-            rd.setFavorite_line(fl.trim());
-        }
+        Field[] reviewFields = rd.getClass().getSuperclass().getDeclaredFields();
+        trimFields(rd, reviewFields);
 
         // 리뷰디테일 없으면 끝
         if (!rd.getYes_detail()) return;
 
         // REVIEW_DETAIL
-        String drt = rd.getDetail_review_text();
-        String l1t = rd.getList_1_title();
-
+        Field[] reviewDetailFields = rd.getClass().getDeclaredFields();
+        trimFields(rd, reviewDetailFields);
     }
+
+    public static void trimFields(ReviewDetailVO rd, Field[] fields) throws IllegalAccessException {
+        for (Field field : fields) {
+            String type = field.getType().getTypeName();
+            if (type == "java.lang.String") {
+                field.setAccessible(true);
+                String val = (String) field.get(rd);
+                if (val != null) {
+                    field.set(rd, val.trim());
+                }
+            }
+        }
+    }
+
 }
