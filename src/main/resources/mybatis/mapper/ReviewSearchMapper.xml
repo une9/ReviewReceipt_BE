@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nineproject.ReviewReceipt.review.ReviewSearchMapper">
+    <select id="getKeywordSearchResult" parameterType="String" resultType="nineproject.ReviewReceipt.model.ReviewVO">
+        SELECT *
+        FROM
+            REVIEW R
+            LEFT JOIN REVIEW_DETAIL RD
+        USING (REVIEW_ID)
+        WHERE
+            R.ABSTRACT_TXT LIKE #{regExp} OR
+            R.FAVORITE_LINE LIKE #{regExp} OR
+            RD.DETAIL_REVIEW_TEXT LIKE #{regExp}
+        ORDER BY
+            R.CREATE_DATE DESC
+    </select>
+
+</mapper>
