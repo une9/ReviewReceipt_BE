@@ -1,4 +1,4 @@
-package nineproject.ReviewReceipt.common;
+package nineproject.ReviewReceipt.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -35,10 +35,10 @@ public class ReviewService {
     public Integer insertReview(ReviewDetailVO review) {
         // 리뷰 저장
         rm.insertRv((ReviewVO) review);
-        Integer rvId = review.getREVIEW_ID();
+        Integer rvId = review.getReview_id();
 
         // 리뷰디테일 존재 시 저장
-        if (review.getYES_DETAIL()) {
+        if (review.getYes_detail()) {
             Map<String, Object> params = new HashMap<>();
             params.put("rvId", rvId);
             params.put("review_detail", review);
@@ -59,7 +59,7 @@ public class ReviewService {
         rm.updateRv(params);
 
         // 리뷰디테일 존재 시 업데이트
-        if (review.getYES_DETAIL()) {
+        if (review.getYes_detail()) {
             rm.updateRvDetail(params);
         }
         return rvId;

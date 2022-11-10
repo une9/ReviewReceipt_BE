@@ -7,19 +7,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Getter @Setter
 @RequiredArgsConstructor
 public class UserVO {
-    private Integer USER_ID;
-    private String MBR_NO;
-    private String USERNAME;
-    private String USER_WEBID;
-    private String RAW_PW;      // 암호화되지 않은 비밀번호 (개발용)
-    private String USER_WEBPW;
+    private Integer user_id;
+    private String mbr_no;
+    private String username;
+    private String user_webid;
+    private String raw_pw;      // 암호화되지 않은 비밀번호 (개발용)
+    private String user_webpw;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private String CREATE_DATE;
+    private String create_date;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private String MODIFY_DATE;
+    private String modify_date;
 
-    private Boolean UNREAD_RECEIPT;
-    private Boolean STATUS;         // 활성: 1 탈퇴: 0
+    private Boolean unread_receipt;
+    private Boolean status;         // 활성: 1 탈퇴: 0
 }

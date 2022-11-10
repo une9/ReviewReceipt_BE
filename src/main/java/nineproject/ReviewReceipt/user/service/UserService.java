@@ -31,7 +31,7 @@ public class UserService {
     public UserVO getUserInfo(int userId) {
         UserVO user = um.getUser(userId);
 
-        if (!user.getSTATUS()) {
+        if (!user.getStatus()) {
             throw new LeavedUserException(LEAVED_USER);
         }
         return user;
@@ -84,8 +84,8 @@ public class UserService {
         }
 
         // 로그인 사용자 정보
-        Integer userId = user.getUSER_ID();
-        String username = user.getUSERNAME();
+        Integer userId = user.getUser_id();
+        String username = user.getUsername();
 
         LoginUserInfo loginUserInfo = new LoginUserInfo(userId, username);
 
@@ -104,16 +104,16 @@ public class UserService {
         String lastMbrNo = um.getLastMbrNo();
         int mbrNum = Integer.parseInt(lastMbrNo.substring(2)) + 1;
         String thisMbrNo = "01" + padLeftWithZero(mbrNum);
-        form.setMBR_NO(thisMbrNo);
+        form.setMbr_no(thisMbrNo);
 
         // 닉네임 공백제거
-        form.setUSERNAME(form.getUSERNAME().trim());
+        form.setUsername(form.getUsername().trim());
 
         // 비밀번호 암호화 & 원래 암호 저장 (개발용)
-        String rawPw = form.getUSER_WEBPW();
+        String rawPw = form.getUser_webpw();
         String encodedPw = passwordEncoder.encode(rawPw);
-        form.setRAW_PW(rawPw);
-        form.setUSER_WEBPW(encodedPw);
+        form.setRaw_pw(rawPw);
+        form.setUser_webpw(encodedPw);
 
         return um.insertUser(form);
     }

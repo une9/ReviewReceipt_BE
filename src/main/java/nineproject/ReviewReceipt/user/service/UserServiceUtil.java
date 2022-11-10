@@ -19,10 +19,10 @@ public class UserServiceUtil {
     }
 
     public static boolean isValidSignupForm(UserMapper um, SignUpFormVO form) {
-        String username = form.getUSERNAME();
-        String webId = form.getUSER_WEBID();
-        String webPw = form.getUSER_WEBPW();
-        String webPwCheck = form.getUSER_WEBPW_CHECK();
+        String username = form.getUsername();
+        String webId = form.getUser_webid();
+        String webPw = form.getUser_webpw();
+        String webPwCheck = form.getUser_webpw_check();
 
         // 빈 값 체크
         if (username == null || username.equals("")) {
@@ -68,6 +68,6 @@ public class UserServiceUtil {
     public static boolean isValidLogin(PasswordEncoder passwordEncoder, UserVO user, String rawPW) {
         if (user == null) return false;
 
-        return passwordEncoder.matches(rawPW, user.getUSER_WEBPW());
+        return passwordEncoder.matches(rawPW, user.getUser_webpw());
     }
 }

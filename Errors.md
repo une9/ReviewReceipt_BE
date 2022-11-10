@@ -29,4 +29,11 @@ https://okky.kr/articles/508171
     https://shinsunyoung.tistory.com/70
     https://velog.io/@jkijki12/Spring-MockMvc
 
+- VO객체를 api로 리턴 시 필드명이 언더바(_) 앞부분만 소문자로 변형되어 나타남
+    ![221109_1](./md_resources/221109_1.PNG)
+    왜??
+    - 필드명 위에 `@JsonProperty("abstract_txt")` 이런 식으로 전부 소문자화한 annotation을 모두 달아주면 소문자로 통일시킬 수 있지만, 필드마다 일일이 달아주기엔 필드가 너무 많음..
+    - https://stackoverflow.com/questions/26744885/jackson-objectmapper-upper-lower-case-issues 여기 밑에 있는 답변 중 https://stackoverflow.com/questions/7854030/configuring-objectmapper-in-spring/32842962#32842962 잭슨 configuration class를 이용하는 방식
+        - mapper.configure가 deprecated
+
 

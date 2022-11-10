@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="nineproject.ReviewReceipt.review.ReviewMapper">
-    <insert id="insertRv" parameterType="nineproject.ReviewReceipt.model.ReviewVO" useGeneratedKeys="true" keyProperty="REVIEW_ID">
+    <insert id="insertRv" parameterType="nineproject.ReviewReceipt.model.ReviewVO" useGeneratedKeys="true" keyProperty="review_id">
             INSERT INTO review
             (
                 USER_ID,
@@ -23,22 +23,22 @@
                 IS_PUBLIC,
                 STATUS
             ) VALUE (
-                #{USER_ID},
+                #{user_id},
                 NOW(),
                 NOW(),
-                #{REVIEW_TYPE},
-                #{DO_DATE},
-                #{REVIEW_TITLE},
-                #{PUBLISH_DATE},
-                #{ABSTRACT_TXT},
-                #{PUBLISHER},
-                #{DIRECTOR},
-                #{PLAYER},
-                #{FAVORITE_LINE},
-                #{SHOW_TYPE},
-                #{PLACE},
-                #{YES_DETAIL},
-                #{IS_PUBLIC},
+                #{review_type},
+                #{do_date},
+                #{review_title},
+                #{publish_date},
+                #{abstract_txt},
+                #{publisher},
+                #{director},
+                #{player},
+                #{favorite_line},
+                #{show_type},
+                #{place},
+                #{yes_detail},
+                #{is_public},
                 1
             )
     </insert>
@@ -71,27 +71,27 @@
             LIST_5_DESC
         ) VALUE (
             #{rvId},
-            #{review_detail.DETAIL_REVIEW_TEXT},
-            #{review_detail.LIST_1_TITLE},
-            #{review_detail.LIST_1_SCORE_TOTAL},
-            #{review_detail.LIST_1_SCORE},
-            #{review_detail.LIST_1_DESC},
-            #{review_detail.LIST_2_TITLE},
-            #{review_detail.LIST_2_SCORE_TOTAL},
-            #{review_detail.LIST_2_SCORE},
-            #{review_detail.LIST_2_DESC},
-            #{review_detail.LIST_3_TITLE},
-            #{review_detail.LIST_3_SCORE_TOTAL},
-            #{review_detail.LIST_3_SCORE},
-            #{review_detail.LIST_3_DESC},
-            #{review_detail.LIST_4_TITLE},
-            #{review_detail.LIST_4_SCORE_TOTAL},
-            #{review_detail.LIST_4_SCORE},
-            #{review_detail.LIST_4_DESC},
-            #{review_detail.LIST_5_TITLE},
-            #{review_detail.LIST_5_SCORE_TOTAL},
-            #{review_detail.LIST_5_SCORE},
-            #{review_detail.LIST_5_DESC}
+            #{review_detail.detail_review_text},
+            #{review_detail.list_1_title},
+            #{review_detail.list_1_score_total},
+            #{review_detail.list_1_score},
+            #{review_detail.list_1_desc},
+            #{review_detail.list_2_title},
+            #{review_detail.list_2_score_total},
+            #{review_detail.list_2_score},
+            #{review_detail.list_2_desc},
+            #{review_detail.list_3_title},
+            #{review_detail.list_3_score_total},
+            #{review_detail.list_3_score},
+            #{review_detail.list_3_desc},
+            #{review_detail.list_4_title},
+            #{review_detail.list_4_score_total},
+            #{review_detail.list_4_score},
+            #{review_detail.list_4_desc},
+            #{review_detail.list_5_title},
+            #{review_detail.list_5_score_total},
+            #{review_detail.list_5_score},
+            #{review_detail.list_5_desc}
         )
     </insert>
 
@@ -101,18 +101,18 @@
             review
         SET
             MODIFY_DATE = NOW(),
-            REVIEW_TYPE = #{review_detail.REVIEW_TYPE},
-            DO_DATE = #{review_detail.DO_DATE},
-            REVIEW_TITLE = #{review_detail.REVIEW_TITLE},
-            PUBLISH_DATE = #{review_detail.PUBLISH_DATE},
-            ABSTRACT_TXT = #{review_detail.ABSTRACT_TXT},
-            PUBLISHER = #{review_detail.PUBLISHER},
-            DIRECTOR = #{review_detail.DIRECTOR},
-            PLAYER = #{review_detail.PLAYER},
-            FAVORITE_LINE = #{review_detail.FAVORITE_LINE},
-            SHOW_TYPE = #{review_detail.SHOW_TYPE},
-            PLACE = #{review_detail.PLACE},
-            IS_PUBLIC = #{review_detail.IS_PUBLIC}
+            REVIEW_TYPE = #{review_detail.review_type},
+            DO_DATE = #{review_detail.do_date},
+            REVIEW_TITLE = #{review_detail.review_title},
+            PUBLISH_DATE = #{review_detail.publish_date},
+            ABSTRACT_TXT = #{review_detail.abstract_txt},
+            PUBLISHER = #{review_detail.publisher},
+            DIRECTOR = #{review_detail.director},
+            PLAYER = #{review_detail.player},
+            FAVORITE_LINE = #{review_detail.favorite_line},
+            SHOW_TYPE = #{review_detail.show_type},
+            PLACE = #{review_detail.place},
+            IS_PUBLIC = #{review_detail.is_public}
         WHERE
             REVIEW_ID = #{rvId}
     </update>
@@ -122,27 +122,27 @@
         UPDATE
             review_detail
         SET
-            DETAIL_REVIEW_TEXT = #{review_detail.DETAIL_REVIEW_TEXT},
-            LIST_1_TITLE = #{review_detail.LIST_1_TITLE},
-            LIST_1_SCORE_TOTAL = #{review_detail.LIST_1_SCORE_TOTAL},
-            LIST_1_SCORE = #{review_detail.LIST_1_SCORE},
-            LIST_1_DESC = #{review_detail.LIST_1_DESC},
-            LIST_2_TITLE = #{review_detail.LIST_2_TITLE},
-            LIST_2_SCORE_TOTAL = #{review_detail.LIST_2_SCORE_TOTAL},
-            LIST_2_SCORE = #{review_detail.LIST_2_SCORE},
-            LIST_2_DESC = #{review_detail.LIST_2_DESC},
-            LIST_3_TITLE = #{review_detail.LIST_3_TITLE},
-            LIST_3_SCORE_TOTAL = #{review_detail.LIST_3_SCORE_TOTAL},
-            LIST_3_SCORE = #{review_detail.LIST_3_SCORE},
-            LIST_3_DESC = #{review_detail.LIST_3_DESC},
-            LIST_4_TITLE = #{review_detail.LIST_4_TITLE},
-            LIST_4_SCORE_TOTAL = #{review_detail.LIST_4_SCORE_TOTAL},
-            LIST_4_SCORE = #{review_detail.LIST_4_SCORE},
-            LIST_4_DESC = #{review_detail.LIST_4_DESC},
-            LIST_5_TITLE = #{review_detail.LIST_5_TITLE},
-            LIST_5_SCORE_TOTAL = #{review_detail.LIST_5_SCORE_TOTAL},
-            LIST_5_SCORE = #{review_detail.LIST_5_SCORE},
-            LIST_5_DESC = #{review_detail.LIST_5_DESC}
+            DETAIL_REVIEW_TEXT = #{review_detail.detail_review_text},
+            LIST_1_TITLE = #{review_detail.list_1_title},
+            LIST_1_SCORE_TOTAL = #{review_detail.list_1_score_total},
+            LIST_1_SCORE = #{review_detail.list_1_score},
+            LIST_1_DESC = #{review_detail.list_1_desc},
+            LIST_2_TITLE = #{review_detail.list_2_title},
+            LIST_2_SCORE_TOTAL = #{review_detail.list_2_score_total},
+            LIST_2_SCORE = #{review_detail.list_2_score},
+            LIST_2_DESC = #{review_detail.list_2_desc},
+            LIST_3_TITLE = #{review_detail.list_3_title},
+            LIST_3_SCORE_TOTAL = #{review_detail.list_3_score_total},
+            LIST_3_SCORE = #{review_detail.list_3_score},
+            LIST_3_DESC = #{review_detail.list_3_desc},
+            LIST_4_TITLE = #{review_detail.list_4_title},
+            LIST_4_SCORE_TOTAL = #{review_detail.list_4_score_total},
+            LIST_4_SCORE = #{review_detail.list_4_score},
+            LIST_4_DESC = #{review_detail.list_4_desc},
+            LIST_5_TITLE = #{review_detail.list_5_title},
+            LIST_5_SCORE_TOTAL = #{review_detail.list_5_score_total},
+            LIST_5_SCORE = #{review_detail.list_5_score},
+            LIST_5_DESC = #{review_detail.list_5_desc}
         WHERE
             REVIEW_ID = #{rvId}
     </update>

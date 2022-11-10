@@ -1,5 +1,6 @@
 package nineproject.ReviewReceipt.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -11,34 +12,34 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class ReviewVO {
 
-    private Integer REVIEW_ID;
-    private Integer USER_ID;
+    private Integer review_id;
+    private Integer user_id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date CREATE_DATE;
+    private Date create_date;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date MODIFY_DATE;
+    private Date modify_date;
 
-    private String REVIEW_TYPE;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date DO_DATE;
-
-    private String REVIEW_TITLE;
+    private String review_type;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date PUBLISH_DATE;
+    private Date do_date;
 
-    private String ABSTRACT_TXT;
-    private String PUBLISHER;
-    private String DIRECTOR;
-    private String PLAYER;
-    private String FAVORITE_LINE;
-    private String SHOW_TYPE;
-    private String PLACE;
-    private Boolean YES_DETAIL;     // 연결된 리뷰디테일 존재 여부
-    private Boolean IS_PUBLIC;  // 공개-비공개
-    private Boolean STATUS;     // 삭제 여부
+    private String review_title;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date publish_date;
+
+    private String abstract_txt;
+    private String publisher;
+    private String director;
+    private String player;
+    private String favorite_line;
+    private String show_type;
+    private String place;
+    private Boolean yes_detail;     // 연결된 리뷰디테일 존재 여부
+    private Boolean is_public;  // 공개-비공개
+    private Boolean status;     // 삭제 여부
 
 }

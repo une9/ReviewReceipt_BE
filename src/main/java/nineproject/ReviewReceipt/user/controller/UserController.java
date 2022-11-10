@@ -53,7 +53,7 @@ public class UserController {
 
     @PostMapping("/login")
     public LoginUserInfo login(HttpServletRequest request, UserVO user) {
-        return us.login(request, user.getUSER_WEBID(), user.getUSER_WEBPW());
+        return us.login(request, user.getUser_webid(), user.getUser_webpw());
     }
     @PostMapping("/signup")
     public int signup(SignUpFormVO form) {

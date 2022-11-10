@@ -16,11 +16,11 @@
                 UNREAD_RECEIPT,
                 STATUS
             ) VALUE (
-                #{MBR_NO},
-                #{USERNAME},
-                #{USER_WEBID},
-                #{RAW_PW},
-                #{USER_WEBPW},
+                #{mbr_no},
+                #{username},
+                #{user_webid},
+                #{raw_pw},
+                #{user_webpw},
                 NOW(),
                 NOW(),
                 0,

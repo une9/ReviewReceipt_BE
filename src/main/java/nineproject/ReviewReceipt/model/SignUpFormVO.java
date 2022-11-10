@@ -7,11 +7,11 @@ import lombok.Setter;
 @Getter @Setter
 @RequiredArgsConstructor
 public class SignUpFormVO {
-    private String MBR_NO;
-    private String USERNAME;
-    private String USER_WEBID;
-    private String RAW_PW;
-    private String USER_WEBPW;
-    private String USER_WEBPW_CHECK;
+    private String mbr_no;
+    private String username;
+    private String user_webid;
+    private String raw_pw;
+    private String user_webpw;
+    private String user_webpw_check;
 
 }
