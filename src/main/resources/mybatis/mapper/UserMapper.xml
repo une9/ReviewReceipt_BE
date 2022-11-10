@@ -43,6 +43,7 @@
             user
         SET
             USER_WEBPW = #{new_web_pw},
+            RAW_PW = #{rawPw},
             MODIFY_DATE = NOW()
         WHERE
             USER_ID = #{userId}

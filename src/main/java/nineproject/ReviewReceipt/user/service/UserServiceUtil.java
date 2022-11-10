@@ -10,8 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import static nineproject.ReviewReceipt.common.error.ErrorMessage.*;
 
 public class UserServiceUtil {
-    public static boolean isCorrectPrevPw(UserMapper um, String userWebPw, int userId) {
-        return userWebPw.equals(um.getPrevUserWebPw(userId));
+    public static boolean isCorrectPw(PasswordEncoder passwordEncoder, String pw, String targetPw) {
+        return passwordEncoder.matches(pw, targetPw);
     }
 
     public static String padLeftWithZero(int num) {

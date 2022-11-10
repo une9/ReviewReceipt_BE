@@ -54,17 +54,27 @@ public class UserService {
             throw new InvalidValueException(SAME_WITH_PREV_PW);
         }
 
-        if (!isCorrectPrevPw(um, prevPw, userId)) {
+        if (!isCorrectPw(passwordEncoder, prevPw, um.getPrevUserWebPw(userId))) {
             throw new InvalidValueException(NOT_CORRECT_PREV_PW);
         }
 
+        // 비밀번호 암호화 & rawPw 저장 (개발용)
+        String encodedNewPw = passwordEncoder.encode(newPw);
+
         HashMap<String, Object> params = new HashMap<>();
         params.put("userId", userId);
-        params.put("new_web_pw", newPw);
+        params.put("new_web_pw", encodedNewPw);
+        params.put("rawPw", newPw);
         return um.updateUserWebPw(params);
     }
 
     public int deleteUser(int userId) {
+        UserVO user = getUserInfo(userId);
+        // 이미 탈퇴한 회원이면 에러
+        if (!user.getStatus()) {
+            throw new LeavedUserException(LEAVED_USER);
+        }
+
         return um.deleteUser(userId);
     }
 
