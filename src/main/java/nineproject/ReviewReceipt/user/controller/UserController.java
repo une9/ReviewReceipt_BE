@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/user")
@@ -54,6 +55,15 @@ public class UserController {
     public LoginUserInfo login(HttpServletRequest request, User user) {
         return us.login(request, user.getUser_webid(), user.getUser_webpw());
     }
+
+    @PostMapping("/logout")
+    public void logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();   // 세션 날림
+        }
+    }
+
     @PostMapping("/signup")
     public int signup(SignUpForm form) {
         return us.signup(form);
