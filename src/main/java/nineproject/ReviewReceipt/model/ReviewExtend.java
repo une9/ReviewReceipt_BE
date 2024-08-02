@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @RequiredArgsConstructor
-public class ReviewDetail extends Review {
+public class ReviewExtend extends Review {
 
     private int review_detail_id;
     private String detail_review_text;
@@ -33,7 +33,8 @@ public class ReviewDetail extends Review {
 
     @Override
     public String toString() {
-        return "ReviewDetailVO{" +
+        return super.toString() +
+                "ReviewExtend{" +
                 "review_detail_id=" + review_detail_id +
                 ", detail_review_text='" + detail_review_text + '\'' +
                 ", list_1_title='" + list_1_title + '\'' +

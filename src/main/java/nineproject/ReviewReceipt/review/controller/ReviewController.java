@@ -1,7 +1,7 @@
 package nineproject.ReviewReceipt.review.controller;
 
 import nineproject.ReviewReceipt.common.utils.LoginUtil;
-import nineproject.ReviewReceipt.model.ReviewDetail;
+import nineproject.ReviewReceipt.model.ReviewExtend;
 import nineproject.ReviewReceipt.review.service.ReviewService;
 import nineproject.ReviewReceipt.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +29,18 @@ public class ReviewController {
     }
 
     @GetMapping("/{rvid}")
-    public ReviewDetail getReviewDetail(@PathVariable int rvid) {
-        return rs.getReviewDetail(rvid);
+    public ReviewExtend getReviewExtend(@PathVariable int rvid) {
+        return rs.getReviewExtend(rvid);
     }
 
     @PostMapping("/insert")
-    public Integer insertReview(ReviewDetail review) throws IllegalAccessException {
+    public Integer insertReview(@RequestBody ReviewExtend review) throws IllegalAccessException {
+        System.out.println("reviewExtend = " + review);
         return rs.insertReview(review);
     }
 
     @PatchMapping("/update/{rvid}")
-    public int updateReview(@PathVariable int rvid, ReviewDetail review_detail) throws IllegalAccessException {
+    public int updateReview(@PathVariable int rvid, ReviewExtend review_detail) throws IllegalAccessException {
         rs.updateReview(rvid, review_detail);
         return rvid;
     }

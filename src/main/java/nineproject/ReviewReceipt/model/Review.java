@@ -41,4 +41,28 @@ public class Review {
     private Boolean is_public;  // 공개-비공개
     private Boolean status;     // 삭제 여부
 
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "review_id=" + review_id +
+                ", user_id=" + user_id +
+                ", create_date=" + create_date +
+                ", modify_date=" + modify_date +
+                ", review_type='" + review_type + '\'' +
+                ", do_date=" + do_date +
+                ", review_title='" + review_title + '\'' +
+                ", publish_date=" + publish_date +
+                ", abstract_txt='" + abstract_txt + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", director='" + director + '\'' +
+                ", player='" + player + '\'' +
+                ", favorite_line='" + favorite_line + '\'' +
+                ", show_type='" + show_type + '\'' +
+                ", place='" + place + '\'' +
+                ", yes_detail=" + yes_detail +
+                ", is_public=" + is_public +
+                ", status=" + status +
+                '}';
+    }
 }

@@ -2,7 +2,7 @@ package nineproject.ReviewReceipt.review.service;
 
 import nineproject.ReviewReceipt.model.Review;
 import nineproject.ReviewReceipt.review.ReviewMapper;
-import nineproject.ReviewReceipt.model.ReviewDetail;
+import nineproject.ReviewReceipt.model.ReviewExtend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,11 +26,11 @@ public class ReviewService {
         return reviewList;
     }
 
-    public ReviewDetail getReviewDetail(int rvid) {
+    public ReviewExtend getReviewExtend(int rvid) {
         return rm.selectByRvId(rvid);
     }
 
-    public Integer insertReview(ReviewDetail review) throws IllegalAccessException {
+    public Integer insertReview(ReviewExtend review) throws IllegalAccessException {
         // 문자열 데이터 공백제거
         ReviewServiceUtil.trimReviewStringFields(review);
 
@@ -49,7 +49,7 @@ public class ReviewService {
         return rvId;
     }
 
-    public int updateReview(int rvId, ReviewDetail review) throws IllegalAccessException {
+    public int updateReview(int rvId, ReviewExtend review) throws IllegalAccessException {
         // 문자열 데이터 공백제거
         ReviewServiceUtil.trimReviewStringFields(review);
 

@@ -1,6 +1,6 @@
 package nineproject.ReviewReceipt.review;
 
-import nineproject.ReviewReceipt.model.ReviewDetail;
+import nineproject.ReviewReceipt.model.ReviewExtend;
 import nineproject.ReviewReceipt.model.Review;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -12,14 +12,14 @@ import java.util.Map;
 @Repository
 public interface ReviewMapper {
 
-    @Select("SELECT * FROM review WHERE status != 0 AND IS_PUBLIC = 1")
+    @Select("SELECT * FROM review WHERE status != 0 AND IS_PUBLIC = 1 ORDER BY CREATE_DATE DESC")
     List<Review> selectAll();
 
     @Select("SELECT * FROM review WHERE status != 0 AND USER_ID = #{userId}")
     List<Review> selectMyReviews(Integer userId);
 
     @Select("SELECT * FROM review LEFT JOIN review_detail USING (review_id) WHERE review_id = #{rvid}")
-    ReviewDetail selectByRvId(int rvid);
+    ReviewExtend selectByRvId(int rvid);
 
     @Select("SELECT * FROM review WHERE user_id = #{userid}")
     Review selectByUserId(int userid);

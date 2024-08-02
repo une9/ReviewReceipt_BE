@@ -1,32 +1,33 @@
 package nineproject.ReviewReceipt.review.service;
 
-import nineproject.ReviewReceipt.model.ReviewDetail;
+import nineproject.ReviewReceipt.model.Review;
+import nineproject.ReviewReceipt.model.ReviewExtend;
 
 import java.lang.reflect.Field;
 
 public class ReviewServiceUtil {
 
-    public static void trimReviewStringFields(ReviewDetail rd) throws IllegalAccessException {
+    public static void trimReviewStringFields(ReviewExtend re) throws IllegalAccessException {
         // REVIEW
-        Field[] reviewFields = rd.getClass().getSuperclass().getDeclaredFields();
-        trimFields(rd, reviewFields);
+        Field[] reviewFields = re.getClass().getSuperclass().getDeclaredFields();
+        trimFields(re, reviewFields);
 
         // 리뷰디테일 없으면 끝
-        if (!rd.getYes_detail()) return;
+        if (!((Review) re).getYes_detail()) return;
 
         // REVIEW_DETAIL
-        Field[] reviewDetailFields = rd.getClass().getDeclaredFields();
-        trimFields(rd, reviewDetailFields);
+        Field[] ReviewExtendFields = re.getClass().getDeclaredFields();
+        trimFields(re, ReviewExtendFields);
     }
 
-    public static void trimFields(ReviewDetail rd, Field[] fields) throws IllegalAccessException {
+    public static void trimFields(ReviewExtend re, Field[] fields) throws IllegalAccessException {
         for (Field field : fields) {
             String type = field.getType().getTypeName();
             if (type == "java.lang.String") {
                 field.setAccessible(true);
-                String val = (String) field.get(rd);
+                String val = (String) field.get(re);
                 if (val != null) {
-                    field.set(rd, val.trim());
+                    field.set(re, val.trim());
                 }
             }
         }
